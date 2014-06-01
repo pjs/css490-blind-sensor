@@ -117,9 +117,9 @@
       <file leaf-file-name="Beam.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/beam/Beam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="289" column="37" selection-start="9630" selection-end="9630" vertical-scroll-proportion="0.93963784" vertical-offset="3838" max-vertical-offset="4635">
+            <state line="286" column="58" selection-start="9522" selection-end="9522" vertical-scroll-proportion="0.34917355" vertical-offset="4091" max-vertical-offset="4725">
               <folding>
-                <element signature="e#0#9851#0" expanded="true" />
+                <element signature="e#0#9964#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -825,9 +825,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
+    <option name="x" value="722" />
     <option name="y" value="22" />
-    <option name="width" value="1436" />
+    <option name="width" value="718" />
     <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -1018,7 +1018,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="04c7574cd4d5ea97" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="004a13b4d2984143" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="AVD_for_Nexus_5" />
     <property name="SearchEverywhereHistory" value="" />
   </component>
@@ -1189,7 +1189,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1436" height="878" extended-state="6" />
+    <frame x="722" y="22" width="718" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1205,7 +1205,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32950193" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32950193" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1296,9 +1296,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/beam/Beam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="289" column="37" selection-start="9630" selection-end="9630" vertical-scroll-proportion="0.93963784" vertical-offset="3838" max-vertical-offset="4635">
+        <state line="286" column="58" selection-start="9522" selection-end="9522" vertical-scroll-proportion="0.34917355" vertical-offset="4091" max-vertical-offset="4725">
           <folding>
-            <element signature="e#0#9851#0" expanded="true" />
+            <element signature="e#0#9964#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>

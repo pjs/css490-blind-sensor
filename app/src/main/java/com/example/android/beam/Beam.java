@@ -289,7 +289,13 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
         textEncryptor.setPassword(key);
 
-        String result = textEncryptor.decrypt(message);
+        String result = null;
+
+        try {
+            result = textEncryptor.decrypt(message);
+        } catch (Exception e) {
+            result = "fail";
+        }
 
         return result;
     }
