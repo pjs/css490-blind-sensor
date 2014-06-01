@@ -3,10 +3,6 @@
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical" >
-<TextView android:id="@+id/textView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Hello, I am a TextView" />
 <TextView android:id="@+id/coords"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -14,7 +10,42 @@ android:orientation="vertical" >
 <Button android:id="@+id/button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Refresh location"
-    android:onClick="updateLocation" />/>
+    android:text="Refresh client location"
+    android:onClick="updateLocation" />
+
+<TextView android:id="@+id/text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="40dp"
+    android:text="Incoming messages will be decrypted based on the current location and displayed below:" />
+
+<TextView android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="no message received yet" />
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="1dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginBottom="50dp"
+    android:background="@android:color/darker_gray"/>
+
+<EditText
+    android:id="@+id/message"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:inputType="text" />
+
+<Button android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Deploy static node at current location"
+    android:onClick="deployNode" />
+
+<TextView android:id="@+id/deployed"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="broadcast node not deployed yet" />
 </LinearLayout>
 <!-- From: file:/Users/paulsimpson/AndroidStudioProjects/sample/app/src/main/res/layout/main.xml -->

@@ -42,6 +42,7 @@ import com.google.android.gms.location.LocationClient;
 
 import java.nio.charset.Charset;
 
+import org.jasypt.util.text.*;
 
 
 public class Beam extends Activity implements CreateNdefMessageCallback,
@@ -130,7 +131,11 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        textView.setText(new String(msg.getRecords()[0].getPayload()));
+        //textView.setText(new String(msg.getRecords()[0].getPayload()));
+
+        String result = unpackMessage(new String(msg.getRecords()[0].getPayload()));
+
+        textView.setText(result);
     }
 
     /**
@@ -265,11 +270,11 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         EditText editText = (EditText) findViewById(R.id.message);
         String message = editText.getText().toString();
 
-        try {
-            String broadcastMessage = SimpleCrypto.encrypt(key, message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+        textEncryptor.setPassword(key);
+
+        broadcastMessage = textEncryptor.encrypt(message);
 
 
         textView = (TextView) findViewById(R.id.deployed);
@@ -278,7 +283,15 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     }
 
     public String unpackMessage(String message) {
-        return message;
+
+        String key = getKeyFromLocation(mCurrentLocation);
+
+        BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+        textEncryptor.setPassword(key);
+
+        String result = textEncryptor.decrypt(message);
+
+        return result;
     }
 
     public String getKeyFromLocation(Location current) {
