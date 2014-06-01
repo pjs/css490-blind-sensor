@@ -31,6 +31,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 
 import java.nio.charset.Charset;
+
 
 
 public class Beam extends Activity implements CreateNdefMessageCallback,
@@ -58,6 +60,9 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     LocationClient mLocationClient;
     Location mCurrentLocation;
+
+    // actual simulation stuff
+    String broadcastMessage = "you forgot to hit the deploy button first";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,8 +86,9 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-        String text = ("Beam me up, Android!\n\n" +
-                "Beam Time: " + System.currentTimeMillis());
+
+        //String text = ("Beam me up, Android!\n\n" + "Beam Time: " + System.currentTimeMillis());
+        String text = broadcastMessage;
         NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { createMimeRecord(
                         "application/com.example.android.beam", text.getBytes())
@@ -249,6 +255,38 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
 
         textView = (TextView) findViewById(R.id.coords);
         textView.setText("latitude: " + lat + "\n" + "longitude: " + lon);
+    }
+
+    public void deployNode(View view) {
+        mCurrentLocation = mLocationClient.getLastLocation();
+
+        String key = getKeyFromLocation(mCurrentLocation);
+
+        EditText editText = (EditText) findViewById(R.id.message);
+        String message = editText.getText().toString();
+
+        try {
+            String broadcastMessage = SimpleCrypto.encrypt(key, message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        textView = (TextView) findViewById(R.id.deployed);
+        textView.setText("successfully deployed node!");
+
+    }
+
+    public String unpackMessage(String message) {
+        return message;
+    }
+
+    public String getKeyFromLocation(Location current) {
+        String key;
+
+        key = "test";
+
+        return key;
     }
 
 }
