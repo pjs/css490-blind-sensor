@@ -19,7 +19,9 @@ package com.example.android.beam;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.location.Location;
 import android.nfc.NdefMessage;
@@ -27,6 +29,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import android.nfc.NfcEvent;
+import android.nfc.tech.NfcF;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -41,6 +44,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 
 import java.nio.charset.Charset;
+import java.text.DecimalFormat;
 
 import org.jasypt.util.text.*;
 
@@ -83,6 +87,8 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         }
         // Register callback
         mNfcAdapter.setNdefPushMessageCallback(this, this);
+
+
     }
 
     @Override
@@ -113,7 +119,9 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             processIntent(getIntent());
         }
+
     }
+
 
     @Override
     public void onNewIntent(Intent intent) {
@@ -131,11 +139,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        //textView.setText(new String(msg.getRecords()[0].getPayload()));
-
-        String result = unpackMessage(new String(msg.getRecords()[0].getPayload()));
-
-        textView.setText(result);
+        textView.setText(new String(msg.getRecords()[0].getPayload()));
     }
 
     /**
@@ -260,6 +264,19 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
 
         textView = (TextView) findViewById(R.id.coords);
         textView.setText("latitude: " + lat + "\n" + "longitude: " + lon);
+
+    }
+
+    public void decryptMessage(View view) {
+        String result = "no message was ever sent";
+
+        textView = (TextView) findViewById(R.id.textView);
+
+        String msg = textView.getText().toString();
+
+        result = unpackMessage(msg);
+
+        textView.setText(result);
     }
 
     public void deployNode(View view) {
@@ -273,16 +290,21 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
 
         BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
         textEncryptor.setPassword(key);
-
-        broadcastMessage = textEncryptor.encrypt(message);
-
-
-        textView = (TextView) findViewById(R.id.deployed);
-        textView.setText("successfully deployed node!");
+        try {
+            broadcastMessage = textEncryptor.encrypt(message);
+            textView = (TextView) findViewById(R.id.deployed);
+            textView.setText("successfully deployed node!");
+        } catch (Exception e) {
+            textView = (TextView) findViewById(R.id.deployed);
+            textView.setText("not able to deploy node...");
+        }
 
     }
 
     public String unpackMessage(String message) {
+
+        if (mCurrentLocation == null)
+            return "please fetch location first";
 
         String key = getKeyFromLocation(mCurrentLocation);
 
@@ -294,7 +316,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         try {
             result = textEncryptor.decrypt(message);
         } catch (Exception e) {
-            result = "fail";
+            result = "unable to decrypt the message";
         }
 
         return result;
@@ -303,7 +325,14 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     public String getKeyFromLocation(Location current) {
         String key;
 
-        key = "test";
+        double lat = Math.abs(current.getLatitude());
+        double lon = Math.abs(current.getLongitude());
+
+        DecimalFormat df = new DecimalFormat("###.##");
+        String slat = df.format(lat);
+        String slon = df.format(lon);
+
+        key = slat + slon;
 
         return key;
     }

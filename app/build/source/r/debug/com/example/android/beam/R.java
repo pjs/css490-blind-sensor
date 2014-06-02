@@ -394,18 +394,19 @@ containing a value of this type.
     public static final class id {
         public static final int book_now=0x7f050010;
         public static final int button=0x7f050015;
+        public static final int button2=0x7f050018;
         public static final int buyButton=0x7f05000a;
         public static final int buy_now=0x7f05000f;
         public static final int buy_with_google=0x7f05000e;
         public static final int classic=0x7f050011;
         public static final int coords=0x7f050014;
-        public static final int deployed=0x7f050019;
+        public static final int deployed=0x7f05001a;
         public static final int grayscale=0x7f050012;
         public static final int holo_dark=0x7f050005;
         public static final int holo_light=0x7f050006;
         public static final int hybrid=0x7f050004;
         public static final int match_parent=0x7f05000c;
-        public static final int message=0x7f050018;
+        public static final int message=0x7f050019;
         public static final int monochrome=0x7f050013;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;

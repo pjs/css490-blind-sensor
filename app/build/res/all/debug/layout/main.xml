@@ -17,12 +17,19 @@ android:orientation="vertical" >
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="40dp"
-    android:text="Incoming messages will be decrypted based on the current location and displayed below:" />
+    android:text="Incoming messages will be displayed below:" />
 
 <TextView android:id="@+id/textView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:text="no message received yet" />
+
+<Button android:id="@+id/button2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="decrypt the message"
+    android:onClick="decryptMessage" />
 
 <View
     android:layout_width="fill_parent"
