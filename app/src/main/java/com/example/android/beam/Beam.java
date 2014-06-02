@@ -53,6 +53,13 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
 
+    private static final String PROVIDER = "flp";
+    private static final double LAT = 37.377166;
+    private static final double LNG = -122.086966;
+    private static final float ACCURACY = 3.0f;
+
+    Location testLocation;
+
     NfcAdapter mNfcAdapter;
     TextView textView;
 
@@ -279,6 +286,19 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         textView.setText(result);
     }
 
+    public void setMock(View view) {
+
+        testLocation = createLocation(LAT, LNG, ACCURACY);
+
+        mCurrentLocation = testLocation;
+
+        String lat = Double.toString(mCurrentLocation.getLatitude());
+        String lon = Double.toString(mCurrentLocation.getLongitude());
+
+        textView = (TextView) findViewById(R.id.coords);
+        textView.setText("latitude: " + lat + "\n" + "longitude: " + lon);
+    }
+
     public void deployNode(View view) {
         mCurrentLocation = mLocationClient.getLastLocation();
 
@@ -335,6 +355,15 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         key = slat + slon;
 
         return key;
+    }
+
+    public Location createLocation(double lat, double lng, float accuracy) {
+        // Create a new Location
+        Location newLocation = new Location(PROVIDER);
+        newLocation.setLatitude(lat);
+        newLocation.setLongitude(lng);
+        newLocation.setAccuracy(accuracy);
+        return newLocation;
     }
 
 }

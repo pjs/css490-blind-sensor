@@ -394,7 +394,7 @@ containing a value of this type.
     public static final class id {
         public static final int book_now=0x7f050010;
         public static final int button=0x7f050015;
-        public static final int button2=0x7f050018;
+        public static final int button2=0x7f050016;
         public static final int buyButton=0x7f05000a;
         public static final int buy_now=0x7f05000f;
         public static final int buy_with_google=0x7f05000e;
@@ -416,8 +416,8 @@ containing a value of this type.
         public static final int selectionDetails=0x7f05000b;
         public static final int strict_sandbox=0x7f050009;
         public static final int terrain=0x7f050003;
-        public static final int text=0x7f050016;
-        public static final int textView=0x7f050017;
+        public static final int text=0x7f050017;
+        public static final int textView=0x7f050018;
         public static final int wrap_content=0x7f05000d;
     }
     public static final class integer {

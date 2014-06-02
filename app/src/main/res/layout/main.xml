@@ -7,13 +7,21 @@ android:orientation="vertical" >
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="no location retrieved yet" />
-<Button android:id="@+id/button"
+
+    <Button android:id="@+id/button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Refresh client location"
     android:onClick="updateLocation" />
 
-<TextView android:id="@+id/text"
+    <Button android:id="@+id/button2"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="set mock location"
+        android:onClick="setMock"
+        android:layout_gravity="right" />
+
+    <TextView android:id="@+id/text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="40dp"
@@ -34,8 +42,8 @@ android:orientation="vertical" >
 <View
     android:layout_width="fill_parent"
     android:layout_height="1dp"
-    android:layout_marginTop="50dp"
-    android:layout_marginBottom="50dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="20dp"
     android:background="@android:color/darker_gray"/>
 
 <EditText
